@@ -5,17 +5,18 @@
 }
 
 h1 {
-  font-size: 3rem; /* Adjusts the size of the text */
-  font-style: italic; /* Makes the text italicized */
+  font-size: 3rem;
+  font-family: cursive;
   color: aliceblue;
   text-align: center;
   margin-bottom: 50px;
-  padding-top: 20px;
+  padding-top: 90px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 body {
   min-height: 100vh;
-  background-image: url("14.jpg");
+  background-image: url("13.jpg");
   background-size: cover;
   background-position: center;
   font-family: Arial, sans-serif;
@@ -25,11 +26,11 @@ body {
 
 header {
   width: 100%;
-  background: transparent; /* Keep it clean, can adjust if needed */
+  background: transparent;
 }
 
 main {
-  flex: 1; /* Ensures content below header is properly positioned */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,6 +47,7 @@ main {
 img {
   height: 300px;
   width: 200px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
 .container {
@@ -54,6 +56,12 @@ img {
   height: 300px;
   transform-style: preserve-3d;
   animation: animate 20s linear infinite;
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  animation-play-state: paused;
+  transform: scale(1.05);
 }
 
 @keyframes animate {
@@ -75,7 +83,7 @@ img {
   transform-style: preserve-3d;
   transform: rotateY(calc(var(--i) * 36deg)) translateZ(400px);
   -webkit-box-reflect: below 2px
-    linear-gradient(transparent, transparent, rgba(4, 4, 4, 0.82));
+    linear-gradient(transparent, transparent, rgba(4, 4, 4, 0.9));
 }
 
 .container span img {
@@ -86,4 +94,115 @@ img {
   height: 100%;
   border-radius: 15px;
   border: 4px double rgb(0, 0, 0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+/* Darkening sequence */
+@keyframes darken-sequence {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(0.5);
+  }
+}
+
+/* Brightening all images together */
+@keyframes brighten-all {
+  0% {
+    filter: brightness(0.5);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+/* Apply darkening effect one by one */
+.container span:nth-child(1) img {
+  animation: darken-sequence 15s forwards;
+  animation-delay: 0s;
+}
+
+.container span:nth-child(2) img {
+  animation: darken-sequence 15s forwards;
+  animation-delay: 1.5s;
+}
+
+.container span:nth-child(3) img {
+  animation: darken-sequence 15s forwards;
+  animation-delay: 3s;
+}
+
+.container span:nth-child(4) img {
+  animation: darken-sequence 15s forwards;
+  animation-delay: 4.5s;
+}
+
+.container span:nth-child(5) img {
+  animation: darken-sequence 15s forwards;
+  animation-delay: 6s;
+}
+
+.container span:nth-child(6) img {
+  animation: darken-sequence 15s forwards;
+  animation-delay: 7.5s;
+}
+
+.container span:nth-child(7) img {
+  animation: darken-sequence 15s forwards;
+  animation-delay: 9s;
+}
+
+.container span:nth-child(8) img {
+  animation: darken-sequence 15s forwards;
+  animation-delay: 10.5s;
+}
+
+.container span:nth-child(9) img {
+  animation: darken-sequence 15s forwards;
+  animation-delay: 12s;
+}
+
+.container span:nth-child(10) img {
+  filter: brightness(1);
+  animation: none;
+}
+
+/* Brighten all images after darkening */
+.container span img {
+  animation: darken-sequence 15s forwards, brighten-all 3s forwards 15s;
+}
+
+.container span img:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8),
+    0 0 60px rgba(255, 255, 255, 0.6), 0 0 90px rgba(255, 255, 255, 0.4);
+  filter: brightness(1.2);
+}
+
+/* Button Styles */
+.more-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #333;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.container span:hover .more-btn {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+.more-btn:hover {
+  background-color: rgba(255, 255, 255, 1);
+  color: #000;
 }
