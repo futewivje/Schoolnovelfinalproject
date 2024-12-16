@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(150deg, rgb(45, 47, 79), rgb(47, 14, 12));
+}
+img {
+  height: 300px;
+  width: 200px;
+}
+
+.container {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  transform-style: preserve-3d;
+}
